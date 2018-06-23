@@ -1,3 +1,5 @@
 sudo apt install gnome-shell-extension-workspaces-to-dock
 sudo apt-get remove gnome-shell-extension-workspaces-to-dock
 
+apache2 root folder: /var/www/
+copy file to that folder: sudo cp file1 /var/www/file2
