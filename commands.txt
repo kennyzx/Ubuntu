@@ -1,0 +1,3 @@
+sudo apt install gnome-shell-extension-workspaces-to-dock
+sudo apt-get remove gnome-shell-extension-workspaces-to-dock
+
