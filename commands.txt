@@ -1,5 +1,10 @@
 sudo apt install gnome-shell-extension-workspaces-to-dock
 sudo apt-get remove gnome-shell-extension-workspaces-to-dock
 
-apache2 root folder: /var/www/
+apache2 document folder: /var/www/
 copy file to that folder: sudo cp file1 /var/www/file2
+
+Change apache2 document folder:
+1. Edit /etc/apache2/apache2.conf add a new <Directory> entry.
+2. Edit /etc/apache2/sites-available/000-default.conf, change DocumentRoot value.
+3. sudo service apache2 restart
