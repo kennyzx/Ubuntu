@@ -1,0 +1,31 @@
+/*View users:*/
+SELECT User, Host, authentication_string FROM mysql.user;
+
+/*Add a database user:*/
+INSERT INTO mysql.user (User,Host,authentication_string,ssl_cipher,x509_issuer,x509_subject)
+VALUES('demouser','localhost',PASSWORD('demopassword'),'','','');
+
+/*Create a new database:*/
+CREATE DATABASE demodb;
+
+/*Show all databases*/
+SHOW DATABASES;
+
+/*Grant database user permissions:*/
+>GRANT ALL PRIVILEGES ON demodb.* to demouser@localhost;
+
+/*To verify that those privileges are set*/
+SHOW GRANTS FOR 'demouser'@'localhost';
+
+/*Show tables in a database*/
+Show Tables from demodb;
+
+/*Create a new table*/
+CREATE TABLE VERSIONS (    
+    VERSION VARCHAR(35),
+	RELEASEDATE DATE
+);
+
+/*INSERT record to a table*/
+INSERT INTO USER (USERNAME, FIRSTNAME, LASTNAME, PASSWORD, ACTIVE) VALUES ('JERRYWU', 'JERRY', 'WU', 'Bb', 0);
+
