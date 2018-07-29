@@ -8,3 +8,6 @@ Change apache2 document folder:
 1. Edit /etc/apache2/apache2.conf add a new <Directory> entry.
 2. Edit /etc/apache2/sites-available/000-default.conf, change DocumentRoot value.
 3. sudo service apache2 restart
+
+sudo apt install mysql-server
+https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/
