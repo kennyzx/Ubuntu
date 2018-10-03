@@ -5,6 +5,12 @@ SELECT User, Host, authentication_string FROM mysql.user;
 INSERT INTO mysql.user (User,Host,authentication_string,ssl_cipher,x509_issuer,x509_subject)
 VALUES('demouser','localhost',PASSWORD('demopassword'),'','','');
 
+/*Revoke all privileges on database level:*/
+REVOKE ALL PRIVILEGES ON ubuntudb.* FROM 'ubuntudbuser'@'localhost';
+
+/*Drop the user*/
+DROP USER 'ubuntudbuser'@'localhost';
+
 /*Follow by a Flush Privileges to update mysql.user table*/
 FLUSH PRIVILEGES;
 
@@ -46,11 +52,14 @@ ALTER TABLE VERSIONS MODIFY VERSION VARCHAR(35) NOT NULL;
 ALTER TABLE VERSIONS ADD PRIMARY KEY (VERSION);
 ALTER TABLE VERSIONS DROP columns_to_be_deleted;
 ALTER TABLE VERSIONS CHANGE RELEASEDATA RELEASEDATE DATE NOT NULL; /*Fix a typo in column name*/
+alter table installations add column `id` int(10) unsigned primary key AUTO_INCREMENT; /*Add a new id column, primary key and auto increment*/
 
 
 /*INSERT record to a table*/
 INSERT INTO USERS (USERNAME, FIRSTNAME, LASTNAME, PASSWORD, ACTIVE) VALUES ('JERRYWU', 'JERRY', 'WU', 'Bb', 0);
 INSERT INTO VERSIONS (VERSION, RELEASEDATE) VALUES ('3.4.1.31', DATE('2017-12-31'));
+/*Remove record from a table*/
+delete from mysql.user where User='JERRYWU'; 
 
 RENAME TABLE old_name TO new_name;
 
@@ -66,3 +75,9 @@ SELET INSTALLATIONS.*, USERS.FIRSTNAME FROM INSTALLATIONS INNER JOIN USERS ON IN
 SELET INSTALLATIONS.*, USERS.FIRSTNAME FROM INSTALLATIONS LEFT OUTER JOIN USERS ON INSTALLATIONS.USERID = USERS.USERID;
 SELET INSTALLATIONS.*, USERS.FIRSTNAME FROM INSTALLATIONS RIGHT OUTER JOIN USERS ON INSTALLATIONS.USERID = USERS.USERID;
 
+DROP table table_to_drop;
+DROP database db_to_drop;
+
+/*log in with specific user*/
+mysql -u ubuntudbuser -p ubuntudb;
+Enter password:
