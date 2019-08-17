@@ -1,0 +1,27 @@
+mysql> delimiter &&
+mysql> create function user_count() 
+     > returns int 
+     > begin 
+     >   declare i int default 0;  
+     >   select count(*) from users into i; 
+     >   return i; 
+     > end&&
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELIMITER ;
+
+mysql> select ROUTINE_NAME FROM INFORMATION_SCHEMA.ROUTINES;
++---------------+
+| ROUTINE_NAME  |
++---------------+
+| account_count |
+| hello         |
+| simpleproc    |
+| user_count    |
++---------------+
+4 rows in set (0.01 sec)
+
+
+mysql> select 'User count: ', user_count();
+
